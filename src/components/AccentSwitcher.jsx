@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
 export const accents = [
-  { id: 'orange', name: 'Electric Orange', color: '#ff5a1f', hover: '#ff7440' },
-  { id: 'cyan', name: 'Cyber Cyan', color: '#06b6d4', hover: '#22d3ee' },
-  { id: 'lime', name: 'Acid Lime', color: '#84cc16', hover: '#a3e635' },
-  { id: 'amber', name: 'Solar Amber', color: '#f59e0b', hover: '#fbbf24' },
+  { id: 'orange', name: 'Electric Orange', color: '#ff5a1f', rgb: '255, 90, 31', hover: '#ff7440' },
+  { id: 'cyan', name: 'Cyber Cyan', color: '#06b6d4', rgb: '6, 182, 212', hover: '#22d3ee' },
+  { id: 'lime', name: 'Acid Lime', color: '#84cc16', rgb: '132, 204, 22', hover: '#a3e635' },
+  { id: 'amber', name: 'Solar Amber', color: '#f59e0b', rgb: '245, 158, 11', hover: '#fbbf24' },
 ]
 
 export default function AccentSwitcher({ className = '' }) {
@@ -13,6 +13,7 @@ export default function AccentSwitcher({ className = '' }) {
   const applyAccent = (accent) => {
     setActive(accent.id)
     document.documentElement.style.setProperty('--accent-color', accent.color)
+    document.documentElement.style.setProperty('--accent-rgb', accent.rgb)
     document.documentElement.style.setProperty('--accent-hover', accent.hover)
     try {
       localStorage.setItem('william_accent', accent.id)
