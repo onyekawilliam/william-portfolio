@@ -1,61 +1,71 @@
-import { LayoutPanelTop, Lightbulb, MonitorSmartphone, Rocket } from 'lucide-react'
+import { Code2, Compass, Cpu, Layers } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 
-const pillars = [
+const principles = [
   {
-    icon: LayoutPanelTop,
-    title: 'Frontend development',
-    text: 'Clean, component-based interfaces built with React and Tailwind CSS.',
+    icon: Code2,
+    title: 'Frontend Engineering',
+    text: 'Building robust interfaces with React and Tailwind CSS. Clean component hierarchy, reusable logic, and predictable state.',
   },
   {
-    icon: MonitorSmartphone,
-    title: 'Responsive web design',
-    text: 'Layouts that feel right on every screen, from small phones to wide desktops.',
+    icon: Layers,
+    title: 'Responsive Design',
+    text: 'Creating fluid layouts tested against real screen sizes — ensuring effortless readability from small mobile screens to ultra-wide displays.',
   },
   {
-    icon: Lightbulb,
-    title: 'Problem solving',
-    text: 'Breaking a tricky requirement into clear steps and finding a practical way through.',
+    icon: Compass,
+    title: 'Pragmatic Problem Solving',
+    text: 'Breaking complex requirements down into maintainable steps. I focus on simplicity over clever, fragile code.',
   },
   {
-    icon: Rocket,
-    title: 'Ideas into products',
-    text: 'Taking a concept from a rough idea to something people can actually use.',
+    icon: Cpu,
+    title: 'Ideas into Working Products',
+    text: 'Bridging the gap between static wireframes and production software, with functional forms, smooth navigation, and snappy load times.',
   },
 ]
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 sm:py-32">
+    <section id="about" className="relative border-t border-white/6 py-20 sm:py-28">
       <div className="container-x">
-        <SectionHeading index="01" label="About" title="Modern, functional web apps that people enjoy using." />
+        <SectionHeading
+          index="01"
+          label="About"
+          title="Building clean, responsive web applications that solve real problems."
+        />
 
-        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          <Reveal className="space-y-6 text-lg leading-relaxed text-mist lg:col-span-6">
+        <div className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="space-y-5 text-base leading-relaxed text-mist sm:text-lg lg:col-span-6">
             <p>
-              Hi, I’m William, a frontend developer with a strong interest in building modern,
-              functional and user-friendly web applications. I enjoy the moment a design stops being
-              a picture and starts behaving like a real product.
+              Hi, I’m William, a frontend developer based in Nigeria. I build modern, responsive web
+              applications for clients locally and internationally.
             </p>
             <p>
-              I care about the details that make a site feel good to use: clear structure, readable
-              typography, smooth interactions and layouts that hold up on any device. I also work
-              with Node.js, Express and MongoDB, which lets me understand how the frontend connects
-              to the rest of an application.
+              I focus on the fundamentals that make a website genuinely good to use: crisp visual
+              hierarchy, semantic structure, responsive layouts that don't glitch, and accessible
+              interactions that work smoothly for every visitor.
             </p>
             <p>
-              Whether you have a fully formed brief or just an idea, I like working through the
-              problem step by step and turning it into a working, polished website.
+              Beyond the browser, I also work with Node.js, Express, and MongoDB, allowing me to build
+              full-stack applications, connect REST APIs, and understand how the frontend integrates
+              with the server.
             </p>
           </Reveal>
 
-          <ul className="grid grid-cols-1 gap-px border border-line bg-line sm:grid-cols-2 lg:col-span-6">
-            {pillars.map(({ icon: Icon, title, text }, i) => (
-              <Reveal as="li" key={title} delay={i * 0.07} className="group bg-ink p-7 transition-colors hover:bg-charcoal">
-                <Icon size={26} strokeWidth={1.5} className="text-accent" aria-hidden="true" />
-                <h3 className="mt-6 text-xl font-semibold">{title}</h3>
-                <p className="mt-2 text-[0.95rem] leading-relaxed text-mist">{text}</p>
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:col-span-6">
+            {principles.map(({ icon: Icon, title, text }, i) => (
+              <Reveal
+                as="li"
+                key={title}
+                delay={i * 0.06}
+                className="group border border-white/8 bg-coal/70 p-6 transition-all duration-300 hover:border-white/16 hover:bg-coal"
+              >
+                <div className="inline-flex size-9 items-center justify-center rounded border border-white/10 bg-charcoal/80 text-accent">
+                  <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
+                </div>
+                <h3 className="mt-4 text-base font-semibold text-bone">{title}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-mist sm:text-sm">{text}</p>
               </Reveal>
             ))}
           </ul>

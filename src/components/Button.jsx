@@ -24,7 +24,8 @@ export default function Button({
   children,
   ...props
 }) {
-  const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`
+  const displayClass = className.includes('flex') || className.includes('hidden') ? '' : 'inline-flex'
+  const classes = `group ${displayClass} items-center justify-center gap-2.5 font-medium whitespace-nowrap transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60 active:translate-y-px ${variants[variant]} ${sizes[size]} ${className}`
   if (href) {
     const extra = external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
     return (

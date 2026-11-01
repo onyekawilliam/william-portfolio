@@ -3,6 +3,7 @@ import { AnimatePresence, m } from 'framer-motion'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import Logo from './Logo'
 import Button from './Button'
+import AccentSwitcher from './AccentSwitcher'
 import useActiveSection from '../hooks/useActiveSection'
 import { navLinks } from '../data/site'
 
@@ -101,6 +102,10 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <div className="hidden lg:block">
+            <AccentSwitcher />
+          </div>
+
           <Button href="#contact" size="sm" className="hidden md:inline-flex">
             Let’s Talk
             <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -155,7 +160,12 @@ export default function Navbar() {
                 </m.li>
               ))}
             </ul>
-            <Button href="#contact" size="lg" onClick={close} className="mt-10 w-full">
+            <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
+              <span className="font-mono text-xs text-mist">Accent Color:</span>
+              <AccentSwitcher />
+            </div>
+
+            <Button href="#contact" size="lg" onClick={close} className="mt-6 w-full">
               Let’s Talk
               <ArrowUpRight size={18} />
             </Button>

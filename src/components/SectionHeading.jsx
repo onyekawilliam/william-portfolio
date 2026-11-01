@@ -4,20 +4,20 @@ export default function SectionHeading({ index, label, title, children, classNam
   return (
     <div className={className}>
       <Reveal>
-        <p className="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-accent uppercase">
+        <div className="inline-flex items-center gap-2 border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-xs text-accent">
           <span>{index}</span>
-          <span aria-hidden="true" className="h-px w-10 bg-accent/60" />
-          <span>{label}</span>
-        </p>
+          <span className="text-white/20">/</span>
+          <span className="tracking-wide text-bone uppercase">{label}</span>
+        </div>
       </Reveal>
       <Reveal delay={0.08}>
-        <h2 className="mt-5 max-w-3xl text-4xl leading-[1.02] font-bold text-balance sm:text-5xl lg:text-6xl">
+        <h2 className="mt-4 max-w-3xl text-3xl leading-[1.08] font-bold text-balance sm:text-4xl lg:text-5xl">
           {title}
         </h2>
       </Reveal>
       {children && (
         <Reveal delay={0.16}>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mist">{children}</p>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-mist sm:text-lg">{children}</p>
         </Reveal>
       )}
     </div>

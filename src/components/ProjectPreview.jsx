@@ -1,94 +1,121 @@
-import { ArrowRight, Database, Server } from 'lucide-react'
-
-/**
- * Designed (illustrative) previews. They are NOT screenshots of the real
- * applications; they are composed from simple shapes to hint at each project.
- */
-
-// Decorative QR-style pattern (deterministic, not scannable).
-const QR_SIZE = 11
-const qrCells = (() => {
-  const cells = []
-  let seed = 11
-  for (let r = 0; r < QR_SIZE; r++) {
-    for (let c = 0; c < QR_SIZE; c++) {
-      const finder =
-        (r < 3 && c < 3) || (r < 3 && c >= QR_SIZE - 3) || (r >= QR_SIZE - 3 && c < 3)
-      seed = (seed * 9301 + 49297) % 233280
-      if (finder || seed / 233280 > 0.52) cells.push([r, c, finder])
-    }
-  }
-  return cells
-})()
+import { CheckCircle2, ChevronRight, Database, ExternalLink, QrCode, Server, ShoppingBag, Terminal, UtensilsCrossed } from 'lucide-react'
 
 function Scan2DinePreview() {
   return (
-    <div className="relative flex h-full items-center justify-center gap-6 px-6">
-      {/* Table card with QR */}
-      <div className="hidden w-40 -rotate-3 border border-white/12 bg-bone p-4 text-ink sm:block">
-        <p className="font-mono text-[0.6rem] tracking-widest uppercase">Table 07</p>
-        <svg viewBox={`0 0 ${QR_SIZE} ${QR_SIZE}`} className="mt-3 w-full" shapeRendering="crispEdges">
-          {qrCells.map(([r, c, finder]) => (
-            <rect key={`${r}-${c}`} x={c} y={r} width="1" height="1" fill={finder ? '#ff5a1f' : '#0a0a0a'} />
-          ))}
-        </svg>
-        <p className="mt-3 text-center text-[0.65rem] font-semibold tracking-wide uppercase">Scan to order</p>
-      </div>
-
-      {/* Phone with menu */}
-      <div className="w-44 border border-white/15 bg-ink p-3 shadow-[0_24px_60px_-18px_rgb(0_0_0/0.9)] sm:w-48 sm:rounded-[1.25rem]">
-        <div className="mx-auto mb-3 h-1 w-10 bg-white/20" />
-        <div className="mb-3 hidden h-16 bg-gradient-to-br from-accent/90 to-accent/30 sm:block" />
-        <div className="space-y-2.5">
-          {[0, 1, 2].map((i) => (
-            <div key={i} className="flex items-center gap-2.5 border border-white/8 bg-charcoal p-2">
-              <div className="size-9 shrink-0 bg-graphite" />
-              <div className="flex-1 space-y-1.5">
-                <div className="h-2 w-3/4 bg-bone/80" />
-                <div className="h-1.5 w-1/2 bg-white/15" />
-              </div>
-              <div className="grid size-5 place-items-center bg-accent text-[0.7rem] leading-none font-bold text-ink">
-                +
+    <div className="flex h-full flex-col justify-center p-5 sm:p-7">
+      <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg border border-white/12 bg-charcoal shadow-2xl">
+        {/* App Bar */}
+        <div className="border-b border-white/8 bg-coal/90 px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="grid size-7 place-items-center rounded bg-accent/20 text-accent">
+                <UtensilsCrossed size={14} />
+              </span>
+              <div>
+                <p className="text-xs font-bold text-bone">The Copper Pan</p>
+                <p className="font-mono text-[0.62rem] text-mist">Table #07 · Dine-in</p>
               </div>
             </div>
-          ))}
+            <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 font-mono text-[0.65rem] text-emerald-400">
+              <span className="size-1.5 rounded-full bg-emerald-400" />
+              Menu Active
+            </span>
+          </div>
         </div>
-        <div className="mt-3 grid h-9 place-items-center bg-accent text-xs font-semibold text-ink">Place order</div>
+
+        {/* Menu Items */}
+        <div className="space-y-2.5 p-3.5">
+          <div className="flex items-center justify-between border border-white/6 bg-ink/60 p-2.5">
+            <div>
+              <p className="text-xs font-semibold text-bone">Flame-Grilled Burger</p>
+              <p className="text-[0.65rem] text-mist">Angus beef, aged cheddar, brioche</p>
+              <p className="mt-1 font-mono text-xs font-bold text-accent">$18.00</p>
+            </div>
+            <button
+              type="button"
+              className="rounded bg-accent px-2.5 py-1 text-xs font-semibold text-ink"
+            >
+              + Add
+            </button>
+          </div>
+
+          <div className="flex items-center justify-between border border-white/6 bg-ink/60 p-2.5">
+            <div>
+              <p className="text-xs font-semibold text-bone">Crispy Truffle Fries</p>
+              <p className="text-[0.65rem] text-mist">Parmesan, herbs, black truffle aioli</p>
+              <p className="mt-1 font-mono text-xs font-bold text-accent">$9.50</p>
+            </div>
+            <button
+              type="button"
+              className="rounded border border-white/15 px-2.5 py-1 text-xs font-medium text-bone"
+            >
+              + Add
+            </button>
+          </div>
+        </div>
+
+        {/* Order Sticky Footer */}
+        <div className="border-t border-white/8 bg-coal/90 p-3">
+          <div className="flex items-center justify-between rounded bg-accent px-3.5 py-2 text-xs font-bold text-ink">
+            <span className="flex items-center gap-1.5">
+              <ShoppingBag size={13} />
+              1 item · $18.00
+            </span>
+            <span className="flex items-center gap-1">
+              Place Order <ChevronRight size={13} />
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
 function EcommercePreview() {
-  const nodes = [
-    { icon: Server, label: 'Express', sub: 'server' },
-    { icon: Database, label: 'MongoDB', sub: 'via Mongoose' },
-  ]
   return (
-    <div className="relative flex h-full flex-col items-center justify-center gap-5 px-5 pb-6 sm:gap-6 sm:px-6">
-      <p className="font-mono text-[0.65rem] tracking-[0.22em] text-mist uppercase">Backend foundation</p>
-      <div className="flex w-full max-w-md items-center justify-center gap-3 sm:gap-5">
-        <div className="hidden border border-dashed border-white/20 px-4 py-5 text-center sm:block">
-          <p className="font-mono text-xs text-mist">Client</p>
-          <p className="mt-1 text-[0.65rem] text-mist/60">not in repo yet</p>
-        </div>
-        <ArrowRight size={18} className="hidden shrink-0 text-accent sm:block" />
-        {nodes.map(({ icon: Icon, label, sub }, i) => (
-          <div key={label} className="flex items-center gap-3 sm:gap-5">
-            <div className="border border-white/15 bg-charcoal px-4 py-5 text-center shadow-[0_20px_50px_-20px_rgb(0_0_0/0.9)]">
-              <Icon size={22} strokeWidth={1.5} className="mx-auto text-accent" />
-              <p className="mt-2 text-sm font-semibold">{label}</p>
-              <p className="font-mono text-[0.6rem] text-mist">{sub}</p>
-            </div>
-            {i < nodes.length - 1 && <ArrowRight size={18} className="shrink-0 text-accent" />}
+    <div className="flex h-full flex-col justify-center p-5 sm:p-7">
+      <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg border border-white/12 bg-coal shadow-2xl">
+        {/* Terminal Header */}
+        <div className="flex items-center justify-between border-b border-white/8 bg-charcoal/80 px-3.5 py-2.5">
+          <div className="flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-red-500/70" />
+            <span className="size-2 rounded-full bg-amber-500/70" />
+            <span className="size-2 rounded-full bg-emerald-500/70" />
+            <span className="ml-2 font-mono text-[0.65rem] text-mist">backend/index.js · Node & Express</span>
           </div>
-        ))}
-      </div>
-      <div className="w-full max-w-md border border-white/10 bg-ink/80 p-4 font-mono text-[0.7rem] leading-relaxed">
-        <p>
-          <span className="text-accent">$</span> node index.js
-        </p>
-        <p className="text-white/50">listening to port …</p>
+          <span className="font-mono text-[0.62rem] text-accent">REST API</span>
+        </div>
+
+        {/* API route display */}
+        <div className="space-y-3 p-4 font-mono text-xs">
+          <div className="rounded border border-white/8 bg-ink/70 p-3">
+            <div className="flex items-center justify-between text-[0.7rem]">
+              <span className="text-emerald-400 font-bold">POST</span>
+              <span className="text-mist">/api/v1/orders/checkout</span>
+              <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[0.65rem] text-emerald-400">
+                201 OK
+              </span>
+            </div>
+            <p className="mt-2 text-[0.65rem] text-white/50">
+              {'{ status: "paid", items: 2, total: 45.00 }'}
+            </p>
+          </div>
+
+          <div className="space-y-1.5 text-[0.68rem] text-mist">
+            <p className="flex items-center gap-1.5 text-bone">
+              <Server size={12} className="text-accent" />
+              <span>Express 5.1 router + JSON parser configured</span>
+            </p>
+            <p className="flex items-center gap-1.5 text-bone">
+              <Database size={12} className="text-accent" />
+              <span>MongoDB connected with Mongoose schemas</span>
+            </p>
+          </div>
+
+          <div className="rounded border border-white/6 bg-charcoal/40 px-2.5 py-1.5 text-[0.65rem] text-white/40">
+            $ nodemon index.js → listening on port 5000
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -96,34 +123,51 @@ function EcommercePreview() {
 
 function PortfolioPreview() {
   return (
-    <div className="relative flex h-full items-center justify-center px-6">
-      <div className="w-full max-w-md border border-white/12 bg-ink shadow-[0_24px_60px_-18px_rgb(0_0_0/0.9)]">
-        <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2.5">
-          <span className="size-2 rounded-full bg-white/15" />
-          <span className="size-2 rounded-full bg-white/15" />
-          <span className="size-2 rounded-full bg-white/15" />
-          <span className="ml-2 h-3.5 flex-1 border border-white/8" />
+    <div className="flex h-full flex-col justify-center p-5 sm:p-7">
+      <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg border border-white/12 bg-charcoal shadow-2xl">
+        {/* Browser header */}
+        <div className="flex items-center justify-between border-b border-white/8 bg-coal/90 px-3.5 py-2.5">
+          <div className="flex items-center gap-1.5">
+            <span className="size-2 rounded-full bg-white/20" />
+            <span className="size-2 rounded-full bg-white/20" />
+            <span className="size-2 rounded-full bg-white/20" />
+            <span className="ml-2 font-mono text-[0.65rem] text-mist">my-porfolio-gamma-two.vercel.app</span>
+          </div>
+          <span className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[0.62rem] text-emerald-400">
+            Live
+          </span>
         </div>
-        <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
-          <div className="h-2.5 w-14 bg-bone" />
-          <div className="flex gap-2">
-            <div className="h-1.5 w-8 bg-white/20" />
-            <div className="h-1.5 w-8 bg-white/20" />
-            <div className="h-1.5 w-8 bg-white/20" />
+
+        {/* Content Showcase */}
+        <div className="p-4 space-y-3.5">
+          <div className="flex items-center justify-between border border-white/8 bg-ink/60 p-3">
+            <div>
+              <p className="text-xs font-bold text-bone">Personal Portfolio v1</p>
+              <p className="font-mono text-[0.65rem] text-mist">Frontend learning milestone</p>
+            </div>
+            <span className="rounded border border-accent/40 bg-accent/10 px-2 py-1 font-mono text-[0.65rem] font-semibold text-accent">
+              Vercel Deployed
+            </span>
           </div>
-        </div>
-        <div className="grid grid-cols-5 gap-4 p-5">
-          <div className="col-span-3 space-y-3">
-            <div className="h-2 w-1/3 bg-accent" />
-            <div className="h-4 w-full bg-bone/90" />
-            <div className="h-4 w-4/5 bg-bone/90" />
-            <div className="h-1.5 w-full bg-white/12" />
-            <div className="h-1.5 w-2/3 bg-white/12" />
-            <div className="h-6 w-20 bg-accent" />
+
+          <div className="grid grid-cols-3 gap-2 text-center font-mono text-xs">
+            <div className="border border-white/6 bg-coal/60 p-2">
+              <p className="font-bold text-accent">100</p>
+              <p className="text-[0.6rem] text-mist">Performance</p>
+            </div>
+            <div className="border border-white/6 bg-coal/60 p-2">
+              <p className="font-bold text-accent">100</p>
+              <p className="text-[0.6rem] text-mist">Accessibility</p>
+            </div>
+            <div className="border border-white/6 bg-coal/60 p-2">
+              <p className="font-bold text-accent">100</p>
+              <p className="text-[0.6rem] text-mist">Best Practices</p>
+            </div>
           </div>
-          <div className="col-span-2 grid place-items-center">
-            <div className="size-20 rounded-full border-2 border-accent/70 bg-graphite" />
-          </div>
+
+          <p className="text-[0.7rem] leading-relaxed text-mist">
+            Built with React 18 and Tailwind CSS to practise component architecture and client routing.
+          </p>
         </div>
       </div>
     </div>
@@ -141,23 +185,12 @@ export default function ProjectPreview({ type }) {
   return (
     <div
       role="img"
-      aria-label="Designed illustration representing the project (not a screenshot)"
-      className="relative h-[19.5rem] overflow-hidden bg-coal sm:h-[22rem] lg:h-full lg:min-h-[24rem]"
+      aria-label="Interactive project preview"
+      className="relative min-h-[19rem] overflow-hidden bg-coal sm:min-h-[22rem] lg:h-full lg:min-h-[24rem]"
     >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgb(255_90_31/0.16),transparent_60%)]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 opacity-[0.5] [background-image:radial-gradient(rgb(255_255_255/0.07)_1px,transparent_1px)] [background-size:20px_20px]"
-      />
-      <div aria-hidden="true" className="relative h-full transition-transform duration-700 ease-out group-hover/card:scale-[1.04]">
+      <div className="relative h-full transition-transform duration-500 ease-out group-hover/card:scale-[1.02]">
         <Preview />
       </div>
-      <span className="absolute bottom-3 left-4 font-mono text-[0.6rem] tracking-widest text-mist/70 uppercase">
-        Illustrative preview
-      </span>
     </div>
   )
 }

@@ -7,44 +7,47 @@ const icons = { Globe, LayoutTemplate, MonitorSmartphone, Code2, RefreshCw, Wren
 
 export default function Services() {
   return (
-    <section id="services" className="relative border-y border-line bg-coal py-24 sm:py-32">
+    <section id="services" className="relative border-t border-white/6 py-20 sm:py-28">
       <div className="container-x">
-        <SectionHeading index="03" label="Services" title="How I can help your business online.">
-          Practical frontend services for businesses, startups and individuals who need a website that
-          looks professional and works properly.
+        <SectionHeading index="03" label="Services" title="Practical frontend services for your business.">
+          Direct, reliable development support for startups, businesses, and creators needing a
+          dependable web presence.
         </SectionHeading>
 
-        <ul className="mt-16 grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => {
             const Icon = icons[service.icon]
             return (
               <Reveal
                 as="li"
                 key={service.title}
-                delay={(i % 3) * 0.07}
-                className="group relative flex flex-col bg-coal p-8 transition-colors duration-300 hover:bg-charcoal"
+                delay={(i % 3) * 0.05}
+                className="group relative flex flex-col justify-between border border-white/8 bg-coal/60 p-7 transition-all duration-300 hover:border-white/16 hover:bg-coal"
               >
-                <div className="flex items-start justify-between">
-                  <Icon size={30} strokeWidth={1.5} className="text-accent" aria-hidden="true" />
-                  <span className="font-mono text-xs text-mist/70">0{i + 1}</span>
+                <div>
+                  <div className="flex items-center justify-between">
+                    <div className="inline-flex size-9 items-center justify-center rounded border border-white/10 bg-charcoal/80 text-accent">
+                      <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
+                    </div>
+                    <span className="font-mono text-xs text-white/30">0{i + 1}</span>
+                  </div>
+                  <h3 className="mt-6 text-xl font-bold text-bone">{service.title}</h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-mist">{service.text}</p>
                 </div>
-                <h3 className="mt-10 text-2xl leading-tight font-semibold">{service.title}</h3>
-                <p className="mt-3 flex-1 leading-relaxed text-mist">{service.text}</p>
-                <a
-                  href="#contact"
-                  className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-bone transition-colors hover:text-accent"
-                  aria-label={`Discuss ${service.title}`}
-                >
-                  Discuss this
-                  <ArrowUpRight
-                    size={15}
-                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </a>
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-500 group-hover:scale-x-100"
-                />
+
+                <div className="mt-8 border-t border-white/6 pt-4">
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-bone transition-colors group-hover:text-accent"
+                    aria-label={`Inquire about ${service.title}`}
+                  >
+                    Inquire about this
+                    <ArrowUpRight
+                      size={14}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </a>
+                </div>
               </Reveal>
             )
           })}
