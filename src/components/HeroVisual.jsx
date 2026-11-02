@@ -112,8 +112,8 @@ export default function HeroVisual() {
                 {[
                   { id: 'react', label: 'React 19' },
                   { id: 'tailwind', label: 'Tailwind CSS' },
-                  { id: 'responsive', label: '100% Mobile Ready' },
-                  { id: 'a11y', label: 'WCAG Accessible' },
+                  { id: 'responsive', label: 'Mobile-first' },
+                  { id: 'a11y', label: 'Accessible markup' },
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -147,7 +147,7 @@ export default function HeroVisual() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Check size={14} className="text-accent" />
-                  Zero cumulative layout shift (CLS)
+                  Reduced-motion support
                 </p>
                 <p className="flex items-center gap-2">
                   <Check size={14} className="text-accent" />
@@ -155,7 +155,7 @@ export default function HeroVisual() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Check size={14} className="text-accent" />
-                  Tested across 320px to 1440px viewports
+                  Responsive layouts from phones to wide screens
                 </p>
               </div>
             </div>

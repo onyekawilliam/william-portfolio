@@ -22,11 +22,11 @@ All editable content lives in **[`src/data/site.js`](src/data/site.js)**.
 | LinkedIn | `contact.linkedin` | Set `value` to your profile URL and `placeholder: false` |
 | Contact form delivery | `.env` | See below |
 
-Placeholders render as dashed, non-clickable cards with a **Replace me** badge, so no dead or fake links are shown. Once `placeholder` is `false` they become real links.
+Contact channels with an empty `value` (such as LinkedIn) are hidden. Fill in `value` to show them as real links.
 
 ## Making the contact form actually send messages
 
-The form validates input and shows clear success/error feedback, but **a static site cannot send email on its own**. Until you connect a service, a valid submission shows an honest "not connected yet, message was not sent" notice.
+The form validates input and shows clear success/error feedback, but **a static site cannot send email on its own**. Until you connect a service, a valid submission opens the visitor's mail app with a pre-filled draft (and offers Gmail and WhatsApp links as backups). The message stays in the form, so nothing is lost if no mail app opens.
 
 1. Create a form on a service such as [Formspree](https://formspree.io), [Web3Forms](https://web3forms.com) or [Getform](https://getform.io) (or use your own backend). It must accept a JSON `POST` with `name`, `email`, `project`, `message`.
 2. Copy `.env.example` to `.env` and set the endpoint:

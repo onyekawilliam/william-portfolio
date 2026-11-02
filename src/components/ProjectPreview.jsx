@@ -90,21 +90,19 @@ function EcommercePreview() {
         <div className="space-y-3 p-4 font-mono text-xs">
           <div className="rounded border border-white/8 bg-ink/70 p-3">
             <div className="flex items-center justify-between text-[0.7rem]">
-              <span className="text-emerald-400 font-bold">POST</span>
-              <span className="text-mist">/api/v1/orders/checkout</span>
+              <span className="text-emerald-400 font-bold">GET</span>
+              <span className="text-mist">/</span>
               <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[0.65rem] text-emerald-400">
-                201 OK
+                200 OK
               </span>
             </div>
-            <p className="mt-2 text-[0.65rem] text-white/50">
-              {'{ status: "paid", items: 2, total: 45.00 }'}
-            </p>
+            <p className="mt-2 text-[0.65rem] text-white/50">{'{ status: "server running" }'}</p>
           </div>
 
           <div className="space-y-1.5 text-[0.68rem] text-mist">
             <p className="flex items-center gap-1.5 text-bone">
               <Server size={12} className="text-accent" />
-              <span>Express 5.1 router + JSON parser configured</span>
+              <span>Express app and JSON parser configured</span>
             </p>
             <p className="flex items-center gap-1.5 text-bone">
               <Database size={12} className="text-accent" />
@@ -113,7 +111,7 @@ function EcommercePreview() {
           </div>
 
           <div className="rounded border border-white/6 bg-charcoal/40 px-2.5 py-1.5 text-[0.65rem] text-white/40">
-            $ nodemon index.js → listening on port 5000
+            $ node index.js → server listening
           </div>
         </div>
       </div>
@@ -126,14 +124,17 @@ const previews = {
   ecommerce: EcommercePreview,
 }
 
-export default function ProjectPreview({ type }) {
+export default function ProjectPreview({ type, name }) {
   const Preview = previews[type]
   return (
     <div
       role="img"
-      aria-label="Interactive project preview"
+      aria-label={`Illustration of the ${name} project (not a screenshot)`}
       className="relative min-h-[19rem] overflow-hidden bg-coal sm:min-h-[22rem] lg:h-full lg:min-h-[24rem]"
     >
+      <span className="absolute top-3 left-3 z-10 border border-white/15 bg-ink/80 px-2 py-0.5 font-mono text-[0.6rem] tracking-wider text-mist uppercase">
+        Illustration
+      </span>
       <div className="relative h-full transition-transform duration-500 ease-out group-hover/card:scale-[1.02]">
         <Preview />
       </div>

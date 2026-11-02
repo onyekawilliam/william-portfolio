@@ -106,8 +106,10 @@ export default function ContactForm() {
     }
 
     if (!ENDPOINT) {
-      // Direct delivery path to William's verified email
-      const targetEmail = contact.email?.value || 'williamngene10@gmail.com'
+      // No form service connected: hand the message to the visitor's mail client.
+      // The draft stays in the form until they choose to leave the success screen,
+      // so nothing is lost if no mail app opens.
+      const targetEmail = contact.email.value
       const subject = `Project Inquiry: ${values.project || 'Frontend Development'} from ${values.name}`
       const body = `Hi William,\n\nName: ${values.name}\nEmail: ${values.email}\nService needed: ${values.project || 'General Inquiry'}\n\nMessage:\n${values.message}\n`
 
@@ -123,9 +125,6 @@ export default function ContactForm() {
       // Trigger user's mail client
       window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 
-      setValues(initialValues)
-      setTouched({})
-      setErrors({})
       setStatus('success')
       return
     }
@@ -150,7 +149,7 @@ export default function ContactForm() {
       setStatus('success')
     } catch {
       setErrorMessage(
-        'Unable to send via form endpoint. Please check your connection or email directly at williamngene10@gmail.com.',
+        `Unable to send your message. Please check your connection or email me directly at ${contact.email.value}.`,
       )
       setStatus('error')
     }
@@ -164,17 +163,13 @@ export default function ContactForm() {
           <h3 className="mt-6 text-3xl font-bold">Message sent!</h3>
           <p className="mt-3 max-w-md leading-relaxed text-mist">
             Thank you for reaching out. Your message has been sent directly to{' '}
-            <span className="font-semibold text-bone">{contact.email?.value || 'williamngene10@gmail.com'}</span>. I will review your details and reply shortly.
+            <span className="font-semibold text-bone">{contact.email.value}</span>. I will review your details and reply shortly.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Button variant="outline" size="sm" onClick={() => setStatus('idle')}>
               Send another message
             </Button>
-            <Button
-              href={`https://wa.me/${contact.whatsapp?.value?.replace(/\D/g, '') || '2347031548095'}`}
-              external
-              size="sm"
-            >
+            <Button href={contact.whatsapp.href(contact.whatsapp.value)} external size="sm">
               Chat on WhatsApp
             </Button>
           </div>
@@ -194,8 +189,9 @@ export default function ContactForm() {
         <h3 className="mt-6 text-3xl font-bold">Email draft ready</h3>
         <p className="mt-3 max-w-lg leading-relaxed text-mist">
           Your message has been pre-filled for{' '}
-          <span className="font-semibold text-bone">{contact.email?.value || 'williamngene10@gmail.com'}</span>.
+          <span className="font-semibold text-bone">{contact.email.value}</span>.
           Please confirm and click <strong className="text-bone font-semibold">Send</strong> in your mail application.
+          If nothing opened, use one of the options below. Your message is still saved here.
         </p>
 
         <div className="mt-6 flex flex-wrap gap-3">
@@ -209,12 +205,7 @@ export default function ContactForm() {
               Launch Mail App
             </Button>
           )}
-          <Button
-            href={`https://wa.me/${contact.whatsapp?.value?.replace(/\D/g, '') || '2347031548095'}`}
-            external
-            variant="outline"
-            size="sm"
-          >
+          <Button href={contact.whatsapp.href(contact.whatsapp.value)} external variant="outline" size="sm">
             Chat on WhatsApp
           </Button>
         </div>
