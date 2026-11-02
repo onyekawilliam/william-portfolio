@@ -37,7 +37,7 @@ The form validates input and shows clear success/error feedback, but **a static 
 
 ## Projects
 
-Project facts were verified against the public repositories (dependencies and structure). Previews are **designed illustrations, not screenshots**. Only *Personal Portfolio* has a live demo (`https://my-porfolio-gamma-two.vercel.app`), which was checked and renders. To add a live demo to another project, set its `live` URL in `src/data/site.js`.
+Project facts were verified against the public repositories (dependencies and structure). Previews are **designed illustrations, not screenshots**. Neither project currently has a verified live demo. To add one, set the project's `live` URL in `src/data/site.js`.
 
 ## Structure
 

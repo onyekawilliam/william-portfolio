@@ -121,63 +121,9 @@ function EcommercePreview() {
   )
 }
 
-function PortfolioPreview() {
-  return (
-    <div className="flex h-full flex-col justify-center p-5 sm:p-7">
-      <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg border border-white/12 bg-charcoal shadow-2xl">
-        {/* Browser header */}
-        <div className="flex items-center justify-between border-b border-white/8 bg-coal/90 px-3.5 py-2.5">
-          <div className="flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-white/20" />
-            <span className="size-2 rounded-full bg-white/20" />
-            <span className="size-2 rounded-full bg-white/20" />
-            <span className="ml-2 font-mono text-[0.65rem] text-mist">my-porfolio-gamma-two.vercel.app</span>
-          </div>
-          <span className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[0.62rem] text-emerald-400">
-            Live
-          </span>
-        </div>
-
-        {/* Content Showcase */}
-        <div className="p-4 space-y-3.5">
-          <div className="flex items-center justify-between border border-white/8 bg-ink/60 p-3">
-            <div>
-              <p className="text-xs font-bold text-bone">Personal Portfolio v1</p>
-              <p className="font-mono text-[0.65rem] text-mist">Frontend learning milestone</p>
-            </div>
-            <span className="rounded border border-accent/40 bg-accent/10 px-2 py-1 font-mono text-[0.65rem] font-semibold text-accent">
-              Vercel Deployed
-            </span>
-          </div>
-
-          <div className="grid grid-cols-3 gap-2 text-center font-mono text-xs">
-            <div className="border border-white/6 bg-coal/60 p-2">
-              <p className="font-bold text-accent">100</p>
-              <p className="text-[0.6rem] text-mist">Performance</p>
-            </div>
-            <div className="border border-white/6 bg-coal/60 p-2">
-              <p className="font-bold text-accent">100</p>
-              <p className="text-[0.6rem] text-mist">Accessibility</p>
-            </div>
-            <div className="border border-white/6 bg-coal/60 p-2">
-              <p className="font-bold text-accent">100</p>
-              <p className="text-[0.6rem] text-mist">Best Practices</p>
-            </div>
-          </div>
-
-          <p className="text-[0.7rem] leading-relaxed text-mist">
-            Built with React 18 and Tailwind CSS to practise component architecture and client routing.
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 const previews = {
   scan2dine: Scan2DinePreview,
   ecommerce: EcommercePreview,
-  portfolio: PortfolioPreview,
 }
 
 export default function ProjectPreview({ type }) {

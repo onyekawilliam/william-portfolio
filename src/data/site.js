@@ -57,7 +57,6 @@ export const navLinks = [
  * Project facts below were checked against the public repositories:
  *  - Scan2Dine:   React 19 + Vite + Tailwind CSS frontend; Express + Mongoose (MongoDB) backend.
  *  - E-commerce:  Node.js + Express + Mongoose (MongoDB) backend foundation (no frontend in the repo yet).
- *  - Portfolio:   React 18 + Vite + Tailwind CSS + React Router. Deployment returned HTTP 200.
  */
 export const projects = [
   {
@@ -81,17 +80,6 @@ export const projects = [
     github: 'https://github.com/onyekawilliam/E-commerce',
     live: null,
     preview: 'ecommerce',
-  },
-  {
-    id: 'portfolio',
-    name: 'Personal Portfolio',
-    kind: 'Frontend project',
-    description:
-      'An earlier portfolio and frontend learning project, built to practise React component structure, routing and Tailwind CSS styling.',
-    tags: ['React', 'Vite', 'Tailwind CSS', 'React Router'],
-    github: 'https://github.com/onyekawilliam/my-porfolio',
-    live: 'https://my-porfolio-gamma-two.vercel.app',
-    preview: 'portfolio',
   },
 ]
 
