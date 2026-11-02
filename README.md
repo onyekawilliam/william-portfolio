@@ -37,7 +37,7 @@ The form validates input and shows clear success/error feedback, but **a static 
 
 ## Projects
 
-Project facts were verified against the public repositories (dependencies and structure). Previews are **designed illustrations, not screenshots**. Neither project currently has a verified live demo. To add one, set the project's `live` URL in `src/data/site.js`.
+Project facts were verified against the public repositories (dependencies and structure). Previews are **designed illustrations, not screenshots**. Scan2Dine has a live demo (Vercel frontend, Render backend running the in-memory demo database). The E-commerce project has none yet. To add or change a demo, set the project's `live` URL, and optionally `liveNote`, in `src/data/site.js`.
 
 ## Structure
 

@@ -57,6 +57,9 @@ export default function ProjectCard({ project, index }) {
               </Button>
             )}
           </div>
+          {project.live && project.liveNote && (
+            <p className="mt-4 text-xs leading-relaxed text-mist">{project.liveNote}</p>
+          )}
         </div>
       </div>
     </Reveal>

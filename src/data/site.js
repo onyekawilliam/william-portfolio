@@ -67,7 +67,9 @@ export const projects = [
       'A QR-based restaurant ordering platform. The idea is simple: customers scan a restaurant’s QR code, browse the menu and place their order, without waiting for a menu or a waiter.',
     tags: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
     github: 'https://github.com/onyekawilliam/Scan2Dine',
-    live: null,
+    live: 'https://scan2-dine.vercel.app',
+    liveNote:
+      'Demo restaurant login: demo@scan2dine.com / demo123. Demo data resets periodically, and the first load can take about a minute while the free server wakes up.',
     preview: 'scan2dine',
   },
   {
