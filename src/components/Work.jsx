@@ -8,8 +8,8 @@ export default function Work() {
     <section id="work" className="relative border-t border-white/6 py-20 sm:py-28">
       <div className="container-x">
         <SectionHeading index="02" label="Selected Work" title="Projects & practical engineering.">
-          A selection of projects exploring restaurant ordering platforms, backend architecture, and
-          responsive interfaces.
+          A selection of full-stack projects: a restaurant ordering platform and a phone retail
+          platform with online payments and an admin dashboard.
         </SectionHeading>
 
         <div className="mt-12 space-y-6 lg:space-y-8">

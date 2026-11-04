@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronRight, Database, ExternalLink, QrCode, Server, ShoppingBag, Terminal, UtensilsCrossed } from 'lucide-react'
+import { ChevronRight, Lock, Receipt, ShoppingBag, Smartphone, UtensilsCrossed, Users } from 'lucide-react'
 
 function Scan2DinePreview() {
   return (
@@ -71,47 +71,44 @@ function Scan2DinePreview() {
   )
 }
 
-function EcommercePreview() {
+function KrisgenPreview() {
   return (
     <div className="flex h-full flex-col justify-center p-5 sm:p-7">
-      <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg border border-white/12 bg-coal shadow-2xl">
-        {/* Terminal Header */}
-        <div className="flex items-center justify-between border-b border-white/8 bg-charcoal/80 px-3.5 py-2.5">
-          <div className="flex items-center gap-1.5">
-            <span className="size-2 rounded-full bg-red-500/70" />
-            <span className="size-2 rounded-full bg-amber-500/70" />
-            <span className="size-2 rounded-full bg-emerald-500/70" />
-            <span className="ml-2 font-mono text-[0.65rem] text-mist">backend/index.js · Node & Express</span>
+      <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg border border-white/12 bg-charcoal shadow-2xl">
+        {/* Admin order summary */}
+        <div className="flex items-center justify-between border-b border-white/8 bg-coal/90 px-4 py-3">
+          <div className="flex items-center gap-2">
+            <span className="grid size-7 place-items-center rounded bg-accent/20 text-accent">
+              <Smartphone size={14} />
+            </span>
+            <div>
+              <p className="text-xs font-bold text-bone">Order summary</p>
+              <p className="font-mono text-[0.62rem] text-mist">Sample figures</p>
+            </div>
           </div>
-          <span className="font-mono text-[0.62rem] text-accent">REST API</span>
+          <span className="rounded-full border border-white/15 px-2 py-0.5 font-mono text-[0.62rem] text-mist">Admin view</span>
         </div>
 
-        {/* API route display */}
-        <div className="space-y-3 p-4 font-mono text-xs">
-          <div className="rounded border border-white/8 bg-ink/70 p-3">
-            <div className="flex items-center justify-between text-[0.7rem]">
-              <span className="text-emerald-400 font-bold">GET</span>
-              <span className="text-mist">/</span>
-              <span className="rounded bg-emerald-500/10 px-1.5 py-0.5 text-[0.65rem] text-emerald-400">
-                200 OK
-              </span>
-            </div>
-            <p className="mt-2 text-[0.65rem] text-white/50">{'{ status: "server running" }'}</p>
+        <div className="space-y-3 p-4">
+          <div className="space-y-1.5 rounded border border-white/8 bg-ink/60 p-3 font-mono text-xs">
+            <div className="flex justify-between text-mist"><span>Selling price</span><span className="text-bone">100.00</span></div>
+            <div className="flex justify-between text-mist"><span className="flex items-center gap-1"><Lock size={11} /> Cost price</span><span className="text-bone">80.00</span></div>
+            <div className="flex justify-between border-t border-white/8 pt-1.5 font-bold text-bone"><span>Profit</span><span className="text-accent">20.00</span></div>
           </div>
 
           <div className="space-y-1.5 text-[0.68rem] text-mist">
             <p className="flex items-center gap-1.5 text-bone">
-              <Server size={12} className="text-accent" />
-              <span>Express app and JSON parser configured</span>
+              <Receipt size={12} className="text-accent" />
+              <span>Commission is a share of the profit</span>
             </p>
             <p className="flex items-center gap-1.5 text-bone">
-              <Database size={12} className="text-accent" />
-              <span>MongoDB connected with Mongoose schemas</span>
+              <Users size={12} className="text-accent" />
+              <span>One level only: seller and their referrer</span>
             </p>
-          </div>
-
-          <div className="rounded border border-white/6 bg-charcoal/40 px-2.5 py-1.5 text-[0.65rem] text-white/40">
-            $ node index.js → server listening
+            <p className="flex items-center gap-1.5 text-bone">
+              <Lock size={12} className="text-accent" />
+              <span>Cost price is never shown to customers</span>
+            </p>
           </div>
         </div>
       </div>
@@ -121,7 +118,7 @@ function EcommercePreview() {
 
 const previews = {
   scan2dine: Scan2DinePreview,
-  ecommerce: EcommercePreview,
+  krisgen: KrisgenPreview,
 }
 
 export default function ProjectPreview({ type, name }) {

@@ -56,7 +56,8 @@ export const navLinks = [
 /**
  * Project facts below were checked against the public repositories:
  *  - Scan2Dine:   React 19 + Vite + Tailwind CSS frontend; Express + Mongoose (MongoDB) backend.
- *  - E-commerce:  Node.js + Express + Mongoose (MongoDB) backend foundation (no frontend in the repo yet).
+ *  - Krisgen:     React 18 + Vite + Tailwind CSS frontend; Express + Mongoose (MongoDB) backend; Flutterwave
+ *                 payments and Cloudinary image uploads (from the project's package.json and README).
  */
 export const projects = [
   {
@@ -73,15 +74,17 @@ export const projects = [
     preview: 'scan2dine',
   },
   {
-    id: 'ecommerce',
-    name: 'E-commerce',
-    kind: 'Backend project',
+    id: 'krisgen',
+    name: 'Krisgen Platform',
+    kind: 'Full-stack e-commerce',
     description:
-      'An e-commerce application exploring online shopping and backend development. The repository currently holds the server foundation: an Express app connected to MongoDB through Mongoose.',
-    tags: ['Node.js', 'Express', 'MongoDB'],
-    github: 'https://github.com/onyekawilliam/E-commerce',
-    live: null,
-    preview: 'ecommerce',
+      'A phone retail platform for Krisgen Communications: an online store with checkout, an admin dashboard, in-store sales, and a free, one-level referral program where commissions are worked out from profit, not from the selling price.',
+    tags: ['React', 'Vite', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'Flutterwave', 'Cloudinary'],
+    github: 'https://github.com/onyekawilliam/krisgen-platform',
+    live: 'https://krisgen-platform.vercel.app',
+    liveNote:
+      'Browse the shop and the referral program pages without signing in. The admin dashboard is private. The first load can take a moment while the free server wakes up.',
+    preview: 'krisgen',
   },
 ]
 
